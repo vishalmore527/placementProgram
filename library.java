@@ -11,15 +11,22 @@ public class library {
         String[] overdueBooks = new String[100]; // Assuming a maximum of 100 overdue books
         int overdueCount = 0;
         int totalBooksProcessed = 0;
-        
-        while(true){
-           
+        boolean continueProcessing = true;
+        while(continueProcessing){
+            System.out.println("Do you want to process another book? (y/n)");
+            String choice = sc.next();
+            if(choice.equalsIgnoreCase("n")){
+                continueProcessing=false;
+                break;
+            }
+            sc.nextLine(); // consume leftover newline so nextLine() works correctly
         System.out.println("Enter the bookID to process:");
         String bookID = sc.nextLine();
         System.out.println("Enter the due date (in days):");
         int dueDate = sc.nextInt();
         System.out.println("Enter the return date (in days):");
         int returnDate = sc.nextInt();
+        sc.nextLine(); // consume leftover newline
         if(returnDate > dueDate){
             int fine=(returnDate-dueDate)*5;
             totalFineCollected += fine; 
@@ -33,11 +40,7 @@ public class library {
             System.out.println("Thank you for returning the book on time.");
             totalBooksProcessed++;
         }
-         System.out.println("Do you want to process another book? (y/n)");
-            String choice = sc.nextLine();
-            if(choice.equalsIgnoreCase("n")){
-                break;
-            }
+        
         }
         System.out.println("Total books processed: " + totalBooksProcessed);
         System.out.println("Total fine collected: " + totalFineCollected);
