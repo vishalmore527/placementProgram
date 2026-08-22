@@ -20,27 +20,24 @@ public class library {
                 break;
             }
             sc.nextLine(); // consume leftover newline so nextLine() works correctly
-        System.out.println("Enter the bookID to process:");
-        String bookID = sc.nextLine();
-        System.out.println("Enter the due date (in days):");
-        int dueDate = sc.nextInt();
-        System.out.println("Enter the return date (in days):");
-        int returnDate = sc.nextInt();
-        sc.nextLine(); // consume leftover newline
-        if(returnDate > dueDate){
-            int fine=(returnDate-dueDate)*5;
-            totalFineCollected += fine; 
-            overdueBooks[overdueCount] = bookID;
-            overdueCount++;
-            totalBooksProcessed++;
-
-        }
-        else{
-
-            System.out.println("Thank you for returning the book on time.");
-            totalBooksProcessed++;
-        }
-        
+            System.out.println("Enter the bookID to process:");
+            String bookID = sc.nextLine();
+            System.out.println("Enter the due date (in days):");
+            int dueDate = sc.nextInt();
+            System.out.println("Enter the return date (in days):");
+            int returnDate = sc.nextInt();
+            sc.nextLine(); // consume leftover newline
+            if(returnDate > dueDate){
+                int fine=(returnDate-dueDate)*5;
+                totalFineCollected += fine; 
+                overdueBooks[overdueCount] = bookID;
+                overdueCount++;
+                totalBooksProcessed++;
+            }
+            else{
+                System.out.println("Thank you for returning the book on time.");
+                totalBooksProcessed++;
+            }
         }
         System.out.println("Total books processed: " + totalBooksProcessed);
         System.out.println("Total fine collected: " + totalFineCollected);
